@@ -20,7 +20,6 @@ def broadcast_message(sender_socket, message, server_msg=False):
                 # Handle broken connections by removing the client
                 clients_name.remove(clients_name[clients.index(client)])
                 clients.remove(client)
-                clients_name.remove(clients_name[clients.index(client)])
                 client.close()
 
 def threaded_client(client_socket):
@@ -39,8 +38,8 @@ def threaded_client(client_socket):
         except:
             print("[ERROR] Issue with client connection.")
             break
-    clients.remove(client_socket)
     clients_name.remove(clients_name[clients.index(client)])
+    clients.remove(client_socket)
     client_socket.close()
 
 host, port = sys.argv[1], int(sys.argv[2])
