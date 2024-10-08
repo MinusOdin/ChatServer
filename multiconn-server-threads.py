@@ -18,6 +18,7 @@ def broadcast_message(sender_socket, message, server_msg=False):
                 client.send(message.encode('utf-8'))
             except:
                 # Handle broken connections by removing the client
+                clients_name.remove(clients_name[clients.index(client)])
                 clients.remove(client)
                 clients_name.remove(clients_name[clients.index(client)])
                 client.close()
